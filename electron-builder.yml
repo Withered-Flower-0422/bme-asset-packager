@@ -1,0 +1,17 @@
+appId: com.bme.assetpackager
+
+productName: BME Asset Packager
+
+directories:
+  output: release
+
+files:
+  - dist-electron/**
+  - dist/**
+  - electron/**
+
+win:
+  icon: public/ballex2.ico
+  target:
+    - nsis
+    - portable
