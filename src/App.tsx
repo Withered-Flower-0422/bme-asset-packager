@@ -15,7 +15,7 @@ import packageJson from "../package.json"
 import FixedListBox, { type FixedListBoxRef } from "./components/FixedListBox"
 import useFormulas from "./hooks/useFormulas"
 import useLang from "./hooks/useLang"
-import m from "./locales"
+import t from "./locales"
 
 const {
   selectPath,
@@ -79,7 +79,7 @@ export default function App() {
   const saveFormulaWithCheck = async () => {
     const name = inputValue.trim()
     if (!name) {
-      warning(m("missingFormulaNameWarning"))
+      warning(t("missingFormulaNameWarning"))
       return
     }
 
@@ -96,10 +96,10 @@ export default function App() {
     const exists = Object.keys(formulas)
     if (exists.includes(name))
       Modal.confirm({
-        title: m("overwriteWarningTitle"),
-        content: m("overwriteWarningMessage", inputValue),
-        okText: m("ok"),
-        cancelText: m("cancel"),
+        title: t("overwriteWarningTitle"),
+        content: t("overwriteWarningMessage", inputValue),
+        okText: t("ok"),
+        cancelText: t("cancel"),
         onOk: _saveFormula,
       })
     else _saveFormula()
@@ -107,19 +107,19 @@ export default function App() {
 
   const loadFormulasWithCheck = async () => {
     if (!selectedValue) {
-      warning(m("noSelectedFormulaWarning"))
+      warning(t("noSelectedFormulaWarning"))
       return
     }
     const { folders, extras, icons } = formulas[selectedValue]
     folderRef.current!.setItems(folders)
     assetRef.current!.setItems(extras)
     iconRef.current!.setItems(icons)
-    success(m("loadFormulaSuccess", selectedValue))
+    success(t("loadFormulaSuccess", selectedValue))
     setIsSelectOpen(false)
   }
 
   const setToNextLang = (step = 1) =>
-    setLang(m.langs.at((m.langs.indexOf(lang) + step) % m.langs.length)!)
+    setLang(t.langs.at((t.langs.indexOf(lang) + step) % t.langs.length)!)
 
   return (
     <div>
@@ -134,7 +134,7 @@ export default function App() {
           ref={folderRef}
           width={300}
           height={400}
-          buttonText={m("addFolders")}
+          buttonText={t("addFolders")}
           buttonIcon={<FolderAddOutlined />}
           addContent={async () => {
             let warn = false
@@ -164,7 +164,7 @@ export default function App() {
               res.push(path)
             }
 
-            if (warn) warning(m("wrongFolderPathWarning"))
+            if (warn) warning(t("wrongFolderPathWarning"))
 
             return res
           }}
@@ -174,7 +174,7 @@ export default function App() {
           ref={assetRef}
           width={300}
           height={400}
-          buttonText={m("addAssets")}
+          buttonText={t("addAssets")}
           buttonIcon={<FileAddOutlined />}
           addContent={async () => {
             let warn = false
@@ -205,7 +205,7 @@ export default function App() {
               res.push(path)
             }
 
-            if (warn) warning(m("wrongAssetPathWarning"))
+            if (warn) warning(t("wrongAssetPathWarning"))
 
             return res
           }}
@@ -215,7 +215,7 @@ export default function App() {
           ref={iconRef}
           width={300}
           height={400}
-          buttonText={m("addIcons")}
+          buttonText={t("addIcons")}
           buttonIcon={<PictureOutlined />}
           addContent={async () => {
             let warn = false
@@ -234,7 +234,7 @@ export default function App() {
               res.push(path.split(sep).at(-1)!.replace(".tex", ""))
             }
 
-            if (warn) warning(m("wrongIconPathWarning"))
+            if (warn) warning(t("wrongIconPathWarning"))
 
             return res
           }}
@@ -250,10 +250,10 @@ export default function App() {
       >
         <>
           <Modal
-            title={m("formulaName")}
+            title={t("formulaName")}
             open={isInputOpen}
-            okText={m("ok")}
-            cancelText={m("cancel")}
+            okText={t("ok")}
+            cancelText={t("cancel")}
             onOk={saveFormulaWithCheck}
             onCancel={() => setIsInputOpen(false)}
           >
@@ -277,16 +277,16 @@ export default function App() {
               setInputValue("")
             }}
           >
-            {m("save")}
+            {t("save")}
           </Button>
         </>
 
         <>
           <Modal
-            title={m("selectFormula")}
+            title={t("selectFormula")}
             open={isSelectOpen}
-            okText={m("ok")}
-            cancelText={m("cancel")}
+            okText={t("ok")}
+            cancelText={t("cancel")}
             onOk={loadFormulasWithCheck}
             onCancel={() => setIsSelectOpen(false)}
           >
@@ -312,10 +312,10 @@ export default function App() {
                     onClick={e => {
                       e.stopPropagation()
                       Modal.confirm({
-                        title: m("deleteWarningTitle"),
-                        content: m("deleteWarningMessage", label),
-                        okText: m("ok"),
-                        cancelText: m("cancel"),
+                        title: t("deleteWarningTitle"),
+                        content: t("deleteWarningMessage", label),
+                        okText: t("ok"),
+                        cancelText: t("cancel"),
                         onOk: () => {
                           deleteFormula(value)
                           if (selectedValue === value)
@@ -356,7 +356,7 @@ export default function App() {
               setSelectedValue(undefined)
             }}
           >
-            {m("import")}
+            {t("import")}
           </Button>
         </>
 
@@ -379,7 +379,7 @@ export default function App() {
             const extras = assetRef.current!.getItems() as BMEPath[]
             const icons = iconRef.current!.getItems()
 
-            message.loading(m("packing"), Infinity)
+            message.loading(t("packing"), Infinity)
             const { notFound, zipSize } = await pack(output, {
               root,
               folders,
@@ -389,15 +389,15 @@ export default function App() {
             message.destroy()
 
             Modal.success({
-              title: m("packSuccessTitle"),
-              okText: m("ok"),
-              content: m("packSuccessMessage", zipSize),
+              title: t("packSuccessTitle"),
+              okText: t("ok"),
+              content: t("packSuccessMessage", zipSize),
               onOk: () => {
                 if (!notFound.size) return
 
                 Modal.warning({
-                  title: m("notFoundAssetWarningTitle"),
-                  okText: m("ok"),
+                  title: t("notFoundAssetWarningTitle"),
+                  okText: t("ok"),
                   content: (
                     <div>
                       <div
@@ -418,7 +418,7 @@ export default function App() {
                           color: "#333",
                         }}
                       >
-                        {m("notFoundAssetWarningFooter")}
+                        {t("notFoundAssetWarningFooter")}
                       </div>
                     </div>
                   ),
@@ -427,7 +427,7 @@ export default function App() {
             })
           }}
         >
-          {m("zip")}
+          {t("zip")}
         </Button>
       </div>
 
@@ -447,7 +447,7 @@ export default function App() {
           transition: "all 0.2s",
         }}
       >
-        {m("abbr")}
+        {t("abbr")}
       </Button>
 
       <div
@@ -462,10 +462,10 @@ export default function App() {
                   )
                 }}
               >
-                {m("bmeAssetPackager")}
+                {t("bmeAssetPackager")}
               </a>
             ),
-            okText: m("ok"),
+            okText: t("ok"),
             content: (
               <div
                 style={{
@@ -484,7 +484,7 @@ export default function App() {
                     openExternal("https://github.com/Withered-Flower-0422")
                   }}
                 >
-                  {m("author", packageJson.author)}
+                  {t("author", packageJson.author)}
                 </a>
                 <a
                   onClick={e => {
@@ -494,7 +494,7 @@ export default function App() {
                     )
                   }}
                 >
-                  {m("version", packageJson.version)}
+                  {t("version", packageJson.version)}
                 </a>
                 <a
                   onClick={e => {
@@ -504,7 +504,7 @@ export default function App() {
                     )
                   }}
                 >
-                  {m("license", packageJson.license)}
+                  {t("license", packageJson.license)}
                 </a>
               </div>
             ),

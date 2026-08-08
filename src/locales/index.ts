@@ -1,4 +1,4 @@
-export type Locale = {
+export interface Locale {
   abbr: string
   missingFormulaNameWarning: string
   saveFormulaSuccess: (inputValue: string) => string
@@ -35,9 +35,9 @@ export type Locale = {
 import en from "./en"
 import zh from "./zh"
 
-const localeMap = { en, zh }
+const locales = { en, zh }
 
-const m: {
+const t: {
   <T extends keyof Locale>(
     msg: T,
     ...args: Locale[T] extends (...args: infer P) => string ? P : []
@@ -45,12 +45,12 @@ const m: {
   lang: Lang
   langs: Lang[]
 } = (msg, ...args) => {
-  let content: string | ((...args: any[]) => string) = localeMap[m.lang][msg]
+  let content: string | ((...args: any[]) => string) = locales[t.lang][msg]
   if (typeof content === "function") content = content(...args)
   return content
 }
-m.lang = "en"
-m.langs = Object.keys(localeMap) as Lang[]
+t.lang = "en"
+t.langs = Object.keys(locales) as Lang[]
 
-export default m
-export type Lang = keyof typeof localeMap
+export default t
+export type Lang = keyof typeof locales
