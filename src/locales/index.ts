@@ -1,4 +1,5 @@
 export type Locale = {
+  abbr: string
   missingFormulaNameWarning: string
   saveFormulaSuccess: (inputValue: string) => string
   overwriteWarningTitle: string
@@ -42,12 +43,14 @@ const m: {
     ...args: Locale[T] extends (...args: infer P) => string ? P : []
   ): string
   lang: Lang
+  langs: Lang[]
 } = (msg, ...args) => {
   let content: string | ((...args: any[]) => string) = localeMap[m.lang][msg]
   if (typeof content === "function") content = content(...args)
   return content
 }
 m.lang = "en"
+m.langs = Object.keys(localeMap) as Lang[]
 
 export default m
 export type Lang = keyof typeof localeMap

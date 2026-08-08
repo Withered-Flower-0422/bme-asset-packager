@@ -1,6 +1,7 @@
 import type { Locale } from "."
 
 export default {
+  abbr: "中",
   missingFormulaNameWarning: "请输入配方名称",
   saveFormulaSuccess: inputValue => `保存成功：${inputValue}`,
   overwriteWarningTitle: "覆盖？",

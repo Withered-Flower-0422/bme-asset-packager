@@ -1,6 +1,7 @@
 import type { Locale } from "."
 
 export default {
+  abbr: "EN",
   missingFormulaNameWarning: "Formula name required",
   saveFormulaSuccess: inputValue => `Save successfully: ${inputValue}`,
   overwriteWarningTitle: "Overwrite?",

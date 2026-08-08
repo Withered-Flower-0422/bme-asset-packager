@@ -118,6 +118,9 @@ export default function App() {
     setIsSelectOpen(false)
   }
 
+  const setToNextLang = (step = 1) =>
+    setLang(m.langs.at((m.langs.indexOf(lang) + step) % m.langs.length)!)
+
   return (
     <div>
       <div
@@ -430,7 +433,8 @@ export default function App() {
 
       <Button
         type="text"
-        onClick={() => setLang(lang === "en" ? "zh" : "en")}
+        onClick={() => setToNextLang()}
+        onWheel={({ deltaY }) => setToNextLang(Math.sign(deltaY))}
         onMouseEnter={e => (e.currentTarget.style.color = "#eee")}
         onMouseLeave={e => (e.currentTarget.style.color = "#aaa")}
         style={{
@@ -443,7 +447,7 @@ export default function App() {
           transition: "all 0.2s",
         }}
       >
-        {lang === "en" ? "EN" : "中"}
+        {m("abbr")}
       </Button>
 
       <div

@@ -3,7 +3,7 @@
   "description": "A tool helps to pack BME assets.",
   "author": "Withered Flower",
   "private": true,
-  "version": "0.2.0",
+  "version": "0.2.1",
   "license": "MIT",
   "type": "module",
   "main": "dist-electron/main.js",
@@ -11,7 +11,7 @@
     "dev": "npm run vite",
     "vite": "vite",
     "electron": "wait-on http://localhost:5173 && electron .",
-    "build": "vite build && electron-builder",
+    "build": "npm update && vite build && electron-builder",
     "lint": "eslint .",
     "preview": "vite preview"
   },
