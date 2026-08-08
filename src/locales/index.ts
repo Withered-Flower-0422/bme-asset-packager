@@ -34,8 +34,11 @@ export interface Locale {
 
 import en from "./en"
 import zh from "./zh"
+import zhTW from "./zh-TW"
+import jp from "./jp"
+import es from "./es"
 
-const locales = { en, zh }
+const locales = { en, zh, zhTW, jp, es }
 
 const t: {
   <T extends keyof Locale>(

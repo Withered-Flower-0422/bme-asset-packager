@@ -1,0 +1,12 @@
+._lang-changer_ {
+  position: absolute;
+  top: 94.5%;
+  transform: translateY(-50%);
+  left: 1%;
+  font-size: 16px;
+  color: #aaa;
+}
+
+._lang-changer_:hover {
+  color: #eee !important;
+}

@@ -1,0 +1,8 @@
+._save-button_ {
+  width: 12%;
+  background: #c03cd1;
+}
+
+._save-button_:hover {
+  background: #932da0 !important;
+}

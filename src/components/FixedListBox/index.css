@@ -1,0 +1,30 @@
+._fixed-listbox_ {
+  background-color: #333;
+  overflow: auto;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+._fixed-listbox_item {
+  padding: 2px 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  gap: 8px;
+}
+
+._fixed-listbox_item-content {
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+  line-break: anywhere;
+  color: #eee;
+  display: block;
+  font-size: 14px;
+}
+
+._fixed-listbox_buttons {
+  display: flex;
+  justify-content: space-between;
+}

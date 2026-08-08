@@ -1,12 +1,16 @@
+import { CloseOutlined, DeleteOutlined } from "@ant-design/icons"
+import { Button } from "antd"
 import {
-  useState,
   forwardRef,
   useImperativeHandle,
+  useState,
   type ReactNode,
 } from "react"
-import { Button } from "antd"
-import { CloseOutlined, DeleteOutlined } from "@ant-design/icons"
 import { v4 } from "uuid"
+import cc from "../../utils/cls"
+import "./index.css"
+
+const c = cc("fixed-listbox")
 
 export interface FixedListBoxRef {
   getItems: () => string[]
@@ -38,42 +42,11 @@ const FixedListBox = forwardRef<FixedListBoxRef, FixedListBoxProps>(
     }))
 
     return (
-      <div style={{ width: "fit-content" }}>
-        <div
-          style={{
-            width,
-            height,
-            backgroundColor: "#333",
-            overflow: "auto",
-            borderRadius: "8px",
-            marginBottom: "8px",
-          }}
-        >
+      <div>
+        <div className={c()} style={{ width, height }}>
           {items.map(item => (
-            <div
-              key={item.id}
-              style={{
-                padding: "2px 8px",
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
-                gap: "8px",
-              }}
-            >
-              <div
-                style={{
-                  flex: 1,
-                  minWidth: 0,
-                  textAlign: "left",
-                  lineBreak: "anywhere",
-                  color: "#eee",
-                  display: "block",
-                  fontSize: 14,
-                }}
-              >
-                {item.content}
-              </div>
+            <div key={item.id} className={c("item")}>
+              <div className={c("item-content")}>{item.content}</div>
               <Button
                 danger
                 type="text"
@@ -86,7 +59,7 @@ const FixedListBox = forwardRef<FixedListBoxRef, FixedListBoxProps>(
           ))}
         </div>
 
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <div className={c("buttons")}>
           <Button
             danger
             type="primary"
