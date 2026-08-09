@@ -1,11 +1,14 @@
 import { contextBridge, ipcRenderer, type IpcMainInvokeEvent } from "electron"
 import type { Api, Handlers } from "./ipc"
+import pre from "./pre"
 
 const apis = [
   "selectPath",
   "getAssetsPath",
   "getUserProfile",
   "getSep",
+  "isDir",
+  "isFile",
 
   "saveFormula",
   "loadFormulas",
@@ -19,15 +22,15 @@ const apis = [
   "pack",
 ] satisfies Api[]
 
-contextBridge.exposeInMainWorld(
-  "electronAPI",
-  Object.fromEntries(
+contextBridge.exposeInMainWorld("electronAPI", {
+  ...Object.fromEntries(
     apis.map(api => [
       api,
       (...args: any[]) => ipcRenderer.invoke(api, ...args),
     ]),
   ),
-)
+  ...pre,
+})
 
 declare global {
   interface Window {
@@ -39,6 +42,6 @@ declare global {
             ...args: A extends [IpcMainInvokeEvent, ...infer B] ? B : A
           ) => R extends Promise<any> ? R : Promise<R>
         : never
-    }
+    } & typeof pre
   }
 }

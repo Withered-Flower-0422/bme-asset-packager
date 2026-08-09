@@ -4,15 +4,13 @@ import { warning } from "./msg"
 import t from "../locales"
 
 const { selectPath } = window.electronAPI
+const iconRoot = [root, "Scripts", "_Editor", "Icons"].join(sep)
 
-export const addFolders = async () => {
+const _addFolders = (sources: string[]) => {
   let warn = false
 
   const res: string[] = []
-  for (let path of await selectPath({
-    properties: ["openDirectory", "multiSelections"],
-    defaultPath: root,
-  })) {
+  for (let path of sources) {
     if (!path.startsWith(root)) {
       warn = true
       continue
@@ -37,15 +35,11 @@ export const addFolders = async () => {
   return res
 }
 
-export const addAssets = async () => {
+const _addAssets = (sources: string[]) => {
   let warn = false
 
   const res: string[] = []
-  for (let path of await selectPath({
-    properties: ["openFile", "multiSelections"],
-    defaultPath: root,
-    filters: [{ name: "BME Assets", extensions: suffixes }],
-  })) {
+  for (let path of sources) {
     if (!path.startsWith(root)) {
       warn = true
       continue
@@ -70,16 +64,12 @@ export const addAssets = async () => {
   return res
 }
 
-export const addIcons = async () => {
+const _addIcons = (sources: string[]) => {
   let warn = false
 
   const res: string[] = []
-  const iconRoot = [root, "Scripts", "_Editor", "Icons"].join(sep)
-  for (const path of await selectPath({
-    properties: ["openFile", "multiSelections"],
-    defaultPath: iconRoot,
-    filters: [{ name: "BME Icons", extensions: ["tex"] }],
-  })) {
+
+  for (const path of sources) {
     if (!path.startsWith(iconRoot)) {
       warn = true
       continue
@@ -91,3 +81,35 @@ export const addIcons = async () => {
 
   return res
 }
+
+export const addFolders = async () =>
+  _addFolders(
+    await selectPath({
+      properties: ["openDirectory", "multiSelections"],
+      defaultPath: root,
+    }),
+  )
+
+export const addAssets = async () =>
+  _addAssets(
+    await selectPath({
+      properties: ["openFile", "multiSelections"],
+      defaultPath: root,
+      filters: [{ name: "BME Assets", extensions: suffixes }],
+    }),
+  )
+
+export const addIcons = async () =>
+  _addIcons(
+    await selectPath({
+      properties: ["openFile", "multiSelections"],
+      defaultPath: iconRoot,
+      filters: [{ name: "BME Icons", extensions: ["tex"] }],
+    }),
+  )
+
+export const onDropFolders = _addFolders
+
+export const onDropAssets = _addAssets
+
+export const onDropIcons = _addIcons

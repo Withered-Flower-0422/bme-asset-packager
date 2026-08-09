@@ -14,7 +14,14 @@ import ZipButton from "./components/ZipButton"
 import useFormulas from "./hooks/useFormulas"
 import useLang from "./hooks/useLang"
 import t from "./locales"
-import { addAssets, addFolders, addIcons } from "./utils/add"
+import {
+  addAssets,
+  addFolders,
+  addIcons,
+  onDropAssets,
+  onDropFolders,
+  onDropIcons,
+} from "./utils/add"
 
 export default function App() {
   const folderRef = useRef<FixedListBoxRef>(null!)
@@ -34,6 +41,8 @@ export default function App() {
           buttonText={t("addFolders")}
           buttonIcon={<FolderAddOutlined />}
           addContent={addFolders}
+          onDropFiles={onDropFolders}
+          disableFiles
         />
         <FixedListBox
           ref={assetRef}
@@ -42,6 +51,8 @@ export default function App() {
           buttonText={t("addAssets")}
           buttonIcon={<FileAddOutlined />}
           addContent={addAssets}
+          onDropFiles={onDropAssets}
+          disableDirectories
         />
         <FixedListBox
           ref={iconRef}
@@ -50,6 +61,8 @@ export default function App() {
           buttonText={t("addIcons")}
           buttonIcon={<PictureOutlined />}
           addContent={addIcons}
+          onDropFiles={onDropIcons}
+          disableDirectories
         />
       </div>
 

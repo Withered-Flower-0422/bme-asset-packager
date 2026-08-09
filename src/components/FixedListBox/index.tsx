@@ -21,16 +21,38 @@ interface FixedListBoxProps {
   buttonIcon: ReactNode
   addContent: () => Promise<string[]>
   initialData?: string[]
+  onDropFiles?: (files: string[]) => string[]
+  disableDirectories?: boolean
+  disableFiles?: boolean
 }
+
+const { isFile, isDir, getFilePath } = window.electronAPI
 
 const FixedListBox = forwardRef<FixedListBoxRef, FixedListBoxProps>(
   (
-    { width, height, buttonText, buttonIcon, addContent, initialData = [] },
+    {
+      width,
+      height,
+      buttonText,
+      buttonIcon,
+      addContent,
+      initialData = [],
+      onDropFiles = files => files,
+      disableDirectories = false,
+      disableFiles = false,
+    },
     ref,
   ) => {
     const [items, setItems] = useState<{ id: string; content: string }[]>(
       initialData.map(content => ({ id: v4(), content })),
     )
+    const [dragging, setDragging] = useState(false)
+
+    const addItems = (newContents: string[]) =>
+      setItems(prev => [
+        ...prev.filter(({ content }) => !newContents.includes(content)),
+        ...newContents.map(content => ({ id: v4(), content })),
+      ])
 
     useImperativeHandle(ref, () => ({
       getItems: () => items.map(({ content }) => content),
@@ -40,7 +62,37 @@ const FixedListBox = forwardRef<FixedListBoxRef, FixedListBoxProps>(
 
     return (
       <div>
-        <div className={style.self} style={{ width, height }}>
+        <div
+          className={`${style.self} ${dragging ? style.dragging : ""} `}
+          onDragOver={e => {
+            e.preventDefault()
+            e.stopPropagation()
+            setDragging(true)
+          }}
+          onDragLeave={e => {
+            e.preventDefault()
+            e.stopPropagation()
+            setDragging(false)
+          }}
+          onDrop={async e => {
+            e.preventDefault()
+            e.stopPropagation()
+            setDragging(false)
+
+            const valid: string[] = []
+            for (const file of [...e.dataTransfer.files].map(file =>
+              getFilePath(file),
+            ))
+              if (
+                (!disableDirectories && (await isDir(file))) ||
+                (!disableFiles && (await isFile(file)))
+              )
+                valid.push(file)
+
+            addItems(onDropFiles(valid))
+          }}
+          style={{ width, height }}
+        >
           {items.map(item => (
             <div key={item.id} className={style.item}>
               <div className={style.itemContent}>{item.content}</div>
@@ -61,19 +113,13 @@ const FixedListBox = forwardRef<FixedListBoxRef, FixedListBoxProps>(
             danger
             type="primary"
             icon={<DeleteOutlined />}
-            onClick={async () => setItems([])}
+            onClick={() => setItems([])}
             style={{ width: "12.5%" }}
           />
           <Button
             type="primary"
             icon={buttonIcon}
-            onClick={async () => {
-              const newContents = await addContent()
-              setItems(prev => [
-                ...prev.filter(({ content }) => !newContents.includes(content)),
-                ...newContents.map(content => ({ id: v4(), content })),
-              ])
-            }}
+            onClick={async () => addItems(await addContent())}
             style={{ width: "85%" }}
           >
             {buttonText}
