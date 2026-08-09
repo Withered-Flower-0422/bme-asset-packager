@@ -4,11 +4,8 @@ import { useState, type RefObject } from "react"
 import type { FixedListBoxRef } from "../../components/FixedListBox"
 import type useFormulas from "../../hooks/useFormulas"
 import t from "../../locales"
-import cc from "../../utils/cls"
 import { success, warning } from "../../utils/msg"
-import "./index.css"
-
-const c = cc("save-button")
+import style from "./index.module.css"
 
 export default function SaveButton({
   folderRef,
@@ -73,7 +70,7 @@ export default function SaveButton({
         />
       </Modal>
       <Button
-        className={c()}
+        className={style.self}
         type="primary"
         size="large"
         icon={<PlusOutlined />}

@@ -1,10 +1,7 @@
 import { Button } from "antd"
 import type useLang from "../../hooks/useLang"
 import t from "../../locales"
-import cc from "../../utils/cls"
-import "./index.css"
-
-const c = cc("lang-changer")
+import style from "./index.module.css"
 
 export default function LangChanger({
   lang,
@@ -18,7 +15,7 @@ export default function LangChanger({
 
   return (
     <Button
-      className={c()}
+      className={style.self}
       type="text"
       onClick={() => setToNextLang()}
       onWheel={({ deltaY }) => setToNextLang(Math.sign(deltaY))}

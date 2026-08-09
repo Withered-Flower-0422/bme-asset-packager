@@ -1,10 +1,10 @@
-._app_listboxes {
+.listboxes {
   padding: 20px;
   display: flex;
   justify-content: space-between;
 }
 
-._app_buttons {
+.buttons {
   display: flex;
   justify-content: space-evenly;
   align-items: center;

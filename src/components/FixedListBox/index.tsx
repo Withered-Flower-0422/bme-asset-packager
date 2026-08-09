@@ -7,10 +7,7 @@ import {
   type ReactNode,
 } from "react"
 import { v4 } from "uuid"
-import cc from "../../utils/cls"
-import "./index.css"
-
-const c = cc("fixed-listbox")
+import style from "./index.module.css"
 
 export interface FixedListBoxRef {
   getItems: () => string[]
@@ -43,10 +40,10 @@ const FixedListBox = forwardRef<FixedListBoxRef, FixedListBoxProps>(
 
     return (
       <div>
-        <div className={c()} style={{ width, height }}>
+        <div className={style.self} style={{ width, height }}>
           {items.map(item => (
-            <div key={item.id} className={c("item")}>
-              <div className={c("item-content")}>{item.content}</div>
+            <div key={item.id} className={style.item}>
+              <div className={style.itemContent}>{item.content}</div>
               <Button
                 danger
                 type="text"
@@ -59,7 +56,7 @@ const FixedListBox = forwardRef<FixedListBoxRef, FixedListBoxProps>(
           ))}
         </div>
 
-        <div className={c("buttons")}>
+        <div className={style.buttons}>
           <Button
             danger
             type="primary"

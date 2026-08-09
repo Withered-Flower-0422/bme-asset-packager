@@ -1,5 +1,5 @@
 import type { ReactNode } from "react"
-import "./index.css"
+// import style from "./index.module.css"
 
 const { openExternal } = window.electronAPI
 

@@ -1,4 +1,4 @@
-._lang-changer_ {
+.self {
   position: absolute;
   top: 94.5%;
   transform: translateY(-50%);
@@ -7,6 +7,6 @@
   color: #aaa;
 }
 
-._lang-changer_:hover {
+.self:hover {
   color: #eee !important;
 }

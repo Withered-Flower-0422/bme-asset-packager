@@ -4,11 +4,8 @@ import { useState, type RefObject } from "react"
 import type { FixedListBoxRef } from "../../components/FixedListBox"
 import type useFormulas from "../../hooks/useFormulas"
 import t from "../../locales"
-import cc from "../../utils/cls"
 import { success, warning } from "../../utils/msg"
-import "./index.css"
-
-const c = cc("import-button")
+import style from "./index.module.css"
 
 export default function ImportButton({
   folderRef,
@@ -29,7 +26,7 @@ export default function ImportButton({
   return (
     <>
       <Button
-        className={c()}
+        className={style.self}
         type="primary"
         size="large"
         icon={<ImportOutlined />}
@@ -68,10 +65,10 @@ export default function ImportButton({
           showSearch
           options={Object.keys(formulas).map(k => ({ label: k, value: k }))}
           optionRender={({ data: { label, value } }) => (
-            <div className={c("item")}>
+            <div className={style.item}>
               <span>{label}</span>
               <CloseOutlined
-                className={c("delete-icon")}
+                className={style.deleteIcon}
                 onClick={e => {
                   e.stopPropagation()
                   Modal.confirm({

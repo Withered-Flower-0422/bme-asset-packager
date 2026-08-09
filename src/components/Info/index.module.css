@@ -1,11 +1,11 @@
-._info_ {
+.self {
   position: absolute;
   bottom: 1%;
   right: 1%;
   font-size: 12px;
 }
 
-._info_links {
+.links {
   display: flex;
   flex-direction: column;
   gap: 6px;

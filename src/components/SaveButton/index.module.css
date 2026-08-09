@@ -1,8 +1,8 @@
-._save-button_ {
+.self {
   width: 12%;
   background: #c03cd1;
 }
 
-._save-button_:hover {
+.self:hover {
   background: #932da0 !important;
 }

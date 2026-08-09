@@ -1,16 +1,13 @@
 import { Modal } from "antd"
 import packageJson from "../../../package.json"
 import t from "../../locales"
-import cc from "../../utils/cls"
 import InfoLink from "../InfoLink"
-import "./index.css"
-
-const c = cc("info")
+import style from "./index.module.css"
 
 export default function Info() {
   return (
     <div
-      className={c()}
+      className={style.self}
       onClick={() => {
         Modal.info({
           title: (
@@ -19,7 +16,7 @@ export default function Info() {
             </InfoLink>
           ),
           content: (
-            <div className={c("links")}>
+            <div className={style.links}>
               <InfoLink link="https://github.com/Withered-Flower-0422">
                 {t("author", packageJson.author)}
               </InfoLink>

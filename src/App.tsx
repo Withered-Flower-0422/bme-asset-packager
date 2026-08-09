@@ -4,7 +4,7 @@ import {
   PictureOutlined,
 } from "@ant-design/icons"
 import { useRef } from "react"
-import "./App.css"
+import style from "./App.module.css"
 import FixedListBox, { type FixedListBoxRef } from "./components/FixedListBox"
 import ImportButton from "./components/ImportButton"
 import Info from "./components/Info"
@@ -15,9 +15,6 @@ import useFormulas from "./hooks/useFormulas"
 import useLang from "./hooks/useLang"
 import t from "./locales"
 import { addAssets, addFolders, addIcons } from "./utils/add"
-import cc from "./utils/cls"
-
-const c = cc("app")
 
 export default function App() {
   const folderRef = useRef<FixedListBoxRef>(null!)
@@ -29,7 +26,7 @@ export default function App() {
 
   return (
     <div>
-      <div className={c("listboxes")}>
+      <div className={style.listboxes}>
         <FixedListBox
           ref={folderRef}
           width={300}
@@ -56,7 +53,7 @@ export default function App() {
         />
       </div>
 
-      <div className={c("buttons")}>
+      <div className={style.buttons}>
         <SaveButton
           folderRef={folderRef}
           assetRef={assetRef}

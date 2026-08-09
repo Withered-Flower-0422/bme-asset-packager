@@ -1,20 +1,20 @@
-._import-button_ {
+.self {
   width: 12%;
   background: #52c41a;
 }
 
-._import-button_:hover {
+.self:hover {
   background: #3d9710 !important;
 }
 
-._import-button_item {
+.item {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 2px 0;
 }
 
-._import-button_delete-icon {
+.deleteIcon {
   font-size: 12px;
   color: #666;
   padding: 6px 6px;
@@ -23,7 +23,7 @@
   transition: all 0.2s ease;
 }
 
-._import-button_delete-icon:hover {
+.deleteIcon:hover {
   color: red;
   background: #fff1f0;
 }
