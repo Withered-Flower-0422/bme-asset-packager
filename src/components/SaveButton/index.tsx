@@ -5,7 +5,7 @@ import type { FixedListBoxRef } from "../../components/FixedListBox"
 import type useFormulas from "../../hooks/useFormulas"
 import t from "../../locales"
 import { success, warning } from "../../utils/msg"
-import style from "./index.module.css"
+import styles from "./index.module.css"
 
 export default function SaveButton({
   folderRef,
@@ -70,7 +70,7 @@ export default function SaveButton({
         />
       </Modal>
       <Button
-        className={style.self}
+        className={styles.self}
         type="primary"
         size="large"
         icon={<PlusOutlined />}

@@ -5,7 +5,7 @@ import type { FixedListBoxRef } from "../../components/FixedListBox"
 import type useFormulas from "../../hooks/useFormulas"
 import t from "../../locales"
 import { success, warning } from "../../utils/msg"
-import style from "./index.module.css"
+import styles from "./index.module.css"
 
 export default function ImportButton({
   folderRef,
@@ -26,7 +26,7 @@ export default function ImportButton({
   return (
     <>
       <Button
-        className={style.self}
+        className={styles.self}
         type="primary"
         size="large"
         icon={<ImportOutlined />}
@@ -65,10 +65,10 @@ export default function ImportButton({
           showSearch
           options={Object.keys(formulas).map(k => ({ label: k, value: k }))}
           optionRender={({ data: { label, value } }) => (
-            <div className={style.item}>
+            <div className={styles.item}>
               <span>{label}</span>
               <CloseOutlined
-                className={style.deleteIcon}
+                className={styles.deleteIcon}
                 onClick={e => {
                   e.stopPropagation()
                   Modal.confirm({

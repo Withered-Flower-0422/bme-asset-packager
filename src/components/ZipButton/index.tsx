@@ -9,7 +9,7 @@ import type {
 import type { FixedListBoxRef } from "../../components/FixedListBox"
 import t from "../../locales"
 import { root, sep, userProfile } from "../../utils/sys"
-import style from "./index.module.css"
+import styles from "./index.module.css"
 
 const { selectPath, pack } = window.electronAPI
 
@@ -24,7 +24,7 @@ export default function ZipButton({
 }) {
   return (
     <Button
-      className={style.self}
+      className={styles.self}
       type="primary"
       size="large"
       icon={<FileZipOutlined />}
@@ -60,12 +60,12 @@ export default function ZipButton({
               okText: t("ok"),
               content: (
                 <div>
-                  <div className={style.warningContainer}>
+                  <div className={styles.warningContainer}>
                     {[...notFound].map(p => (
                       <div key={v4()}>{p}</div>
                     ))}
                   </div>
-                  <div className={style.warningFooter}>
+                  <div className={styles.warningFooter}>
                     {t("notFoundAssetWarningFooter")}
                   </div>
                 </div>

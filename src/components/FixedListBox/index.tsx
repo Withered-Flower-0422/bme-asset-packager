@@ -7,7 +7,7 @@ import {
   type ReactNode,
 } from "react"
 import { v4 } from "uuid"
-import style from "./index.module.css"
+import styles from "./index.module.css"
 
 export interface FixedListBoxRef {
   getItems: () => string[]
@@ -63,7 +63,7 @@ const FixedListBox = forwardRef<FixedListBoxRef, FixedListBoxProps>(
     return (
       <div>
         <div
-          className={`${style.self} ${dragging ? style.dragging : ""} `}
+          className={`${styles.self} ${dragging ? styles.dragging : ""} `}
           onDragOver={e => {
             e.preventDefault()
             e.stopPropagation()
@@ -94,8 +94,8 @@ const FixedListBox = forwardRef<FixedListBoxRef, FixedListBoxProps>(
           style={{ width, height }}
         >
           {items.map(item => (
-            <div key={item.id} className={style.item}>
-              <div className={style.itemContent}>{item.content}</div>
+            <div key={item.id} className={styles.item}>
+              <div className={styles.itemContent}>{item.content}</div>
               <Button
                 danger
                 type="text"
@@ -108,7 +108,7 @@ const FixedListBox = forwardRef<FixedListBoxRef, FixedListBoxProps>(
           ))}
         </div>
 
-        <div className={style.buttons}>
+        <div className={styles.buttons}>
           <Button
             danger
             type="primary"
