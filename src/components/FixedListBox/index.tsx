@@ -54,6 +54,15 @@ const FixedListBox = forwardRef<FixedListBoxRef, FixedListBoxProps>(
         ...newContents.map(content => ({ id: v4(), content })),
       ])
 
+    const handleDrag = (
+      e: React.DragEvent<HTMLDivElement>,
+      setDraggingTo: boolean,
+    ) => {
+      e.preventDefault()
+      e.stopPropagation()
+      setDragging(setDraggingTo)
+    }
+
     useImperativeHandle(ref, () => ({
       getItems: () => items.map(({ content }) => content),
       setItems: (data: string[]) =>
@@ -64,20 +73,10 @@ const FixedListBox = forwardRef<FixedListBoxRef, FixedListBoxProps>(
       <div>
         <div
           className={`${styles.self} ${dragging ? styles.dragging : ""} `}
-          onDragOver={e => {
-            e.preventDefault()
-            e.stopPropagation()
-            setDragging(true)
-          }}
-          onDragLeave={e => {
-            e.preventDefault()
-            e.stopPropagation()
-            setDragging(false)
-          }}
+          onDragOver={e => handleDrag(e, true)}
+          onDragLeave={e => handleDrag(e, false)}
           onDrop={async e => {
-            e.preventDefault()
-            e.stopPropagation()
-            setDragging(false)
+            handleDrag(e, false)
 
             const valid: string[] = []
             for (const file of [...e.dataTransfer.files].map(file =>
