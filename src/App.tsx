@@ -9,7 +9,9 @@ import FixedListBox, { type FixedListBoxRef } from "./components/FixedListBox"
 import ImportButton from "./components/ImportButton"
 import Info from "./components/Info"
 import LangChanger from "./components/LangChanger"
+import OpenAssetFolder from "./components/OpenAssetFolder"
 import SaveButton from "./components/SaveButton"
+import Title from "./components/Title"
 import ZipButton from "./components/ZipButton"
 import useFormulas from "./hooks/useFormulas"
 import useLang from "./hooks/useLang"
@@ -33,6 +35,10 @@ export default function App() {
 
   return (
     <div>
+      <Title>{t("bmeAssetPackager")}</Title>
+
+      <OpenAssetFolder />
+
       <div className={styles.listboxes}>
         <FixedListBox
           ref={folderRef}

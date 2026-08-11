@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react"
+import { useCallback, useEffect, useState } from "react"
 import m, { type Lang } from "../locales"
 
 export default function () {

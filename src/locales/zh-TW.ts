@@ -5,9 +5,9 @@ export default {
   missingFormulaNameWarning: "請輸入配方名稱",
   saveFormulaSuccess: inputValue => `保存成功：${inputValue}`,
   overwriteWarningTitle: "覆蓋？",
-  overwriteWarningMessage: inputValue => `"${inputValue}"已存在，是否覆蓋？`,
+  overwriteWarningMessage: inputValue => `"${inputValue}" 已存在，是否覆蓋？`,
   noSelectedFormulaWarning: "請選擇一個配方以導入",
-  loadFormulaSuccess: selectedValue => `"${selectedValue}"已載入`,
+  loadFormulaSuccess: selectedValue => `"${selectedValue}" 已載入`,
   addFolders: "添加資料夾",
   wrongFolderPathWarning:
     "添加的資料夾必須為 Assets 資料夾的子資料夾（例如：Items/Maze）。非法資源已被忽略。",

@@ -1,0 +1,59 @@
+.self,
+.self span:first-child,
+.gradient {
+  transition: opacity 0.35s ease;
+}
+
+.self {
+  position: relative;
+  margin-bottom: 0px;
+
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  letter-spacing: 1px;
+  line-height: 1em;
+
+  cursor: default;
+  user-select: none;
+  display: inline-block;
+}
+
+.gradient {
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(135deg, #bd34fe, #ff6b9d, #41d1ff);
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  opacity: 0;
+
+  animation: hue 6s linear infinite;
+}
+
+.self:hover {
+  opacity: 0.8;
+}
+
+.self span {
+  display: block;
+}
+
+.active .gradient {
+  opacity: 1;
+}
+
+.active span:first-child {
+  opacity: 0;
+}
+
+@keyframes hue {
+  from {
+    filter: hue-rotate(0deg);
+  }
+
+  to {
+    filter: hue-rotate(360deg);
+  }
+}

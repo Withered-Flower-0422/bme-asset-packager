@@ -17,7 +17,12 @@ const apis = [
   "getLang",
   "setLang",
 
+  "getTitleGradient",
+  "setTitleGradient",
+
   "openExternal",
+  "showItemInFolder",
+  "openPath",
 
   "pack",
 ] satisfies Api[]

@@ -13,6 +13,7 @@ export interface Formula {
 
 export interface StoreType {
   winBounds: Rectangle | null
+  titleGradient: boolean
   formulas: Formulas
   lang: Lang
 }
@@ -20,6 +21,7 @@ export interface StoreType {
 export const store = new Store<StoreType>({
   defaults: {
     winBounds: null,
+    titleGradient: false,
     formulas: {},
     lang: "en",
   },
@@ -29,6 +31,11 @@ export default {
   getLang: () => store.get("lang"),
 
   setLang: (_, lang: Lang) => store.set("lang", lang),
+
+  getTitleGradient: () => store.get("titleGradient"),
+
+  setTitleGradient: (_, titleGradient: boolean) =>
+    store.set("titleGradient", titleGradient),
 
   loadFormulas: () => store.get("formulas"),
 
