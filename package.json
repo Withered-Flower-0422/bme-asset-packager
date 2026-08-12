@@ -10,9 +10,10 @@
   "scripts": {
     "dev": "npm run vite",
     "vite": "vite",
-    "build": "npm update && vite build && electron-builder",
+    "build": "npm run clean && npm update && vite build && electron-builder",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "clean": "if exist release rmdir /s /q release"
   },
   "dependencies": {
     "antd": "^6.5.2",
