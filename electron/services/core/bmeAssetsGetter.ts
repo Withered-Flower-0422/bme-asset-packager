@@ -7,7 +7,7 @@ import {
   isIcon,
   isScriptAsset,
 } from "../utils/builtin"
-import { assetRegs, importedPathInJsReg, nonAsciiReg, sep } from "../utils/reg"
+import { assetRegs, importedPathInJsReg, garbleReg, sep } from "../utils/reg"
 
 export type GroupedAssets = {
   Audios: Set<BMEPath<"Audios">>
@@ -75,7 +75,7 @@ export default class BMEAssetsGetter {
       if (isHybridAsset(a)) {
         for (const reg of assetRegs) {
           const matches = readFileSync(p, "utf-8")
-            .replaceAll(nonAsciiReg, "")
+            .replaceAll(garbleReg, "")
             .match(reg) as BMEPath[] | null
           if (!matches) continue
           q.push(...matches)

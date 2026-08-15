@@ -1,6 +1,6 @@
 export const sep = /\/|\\/g
 
-export const nonAsciiReg = /[^ \P{C}\s]/gu
+export const garbleReg = /[^ \P{C}\s]/gu
 
 export const importedPathInJsReg =
   /(?:import|from)\s*(["'])(Scripts\/[^"']*?\.js)\1/g
