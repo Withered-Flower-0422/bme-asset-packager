@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
-import styles from "./index.module.css"
 import { v4 } from "uuid"
+import styles from "./index.module.css"
 
 export default function Ripple() {
   const [ripples, setRipples] = useState<
