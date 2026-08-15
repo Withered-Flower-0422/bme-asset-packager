@@ -3,6 +3,8 @@
   bottom: 1%;
   right: 1%;
   font-size: 12px;
+  cursor: help;
+  user-select: none;
 }
 
 .links {

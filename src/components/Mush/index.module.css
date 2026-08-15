@@ -1,0 +1,49 @@
+.self {
+  position: absolute;
+  top: 3.5%;
+  right: 3%;
+  width: 40px;
+  transition: 200ms all linear;
+  cursor: pointer;
+  user-select: none;
+}
+
+.self:hover.red {
+  filter: brightness(0.5) drop-shadow(0 0 1px red) drop-shadow(0 0 1px red)
+    drop-shadow(0 0 1px red);
+}
+
+.self:hover.orange {
+  filter: brightness(0.5) drop-shadow(0 0 1px orange)
+    drop-shadow(0 0 1px orange) drop-shadow(0 0 1px orange);
+}
+
+.self:hover.yellow {
+  filter: brightness(0.5) drop-shadow(0 0 1px yellow)
+    drop-shadow(0 0 1px yellow) drop-shadow(0 0 1px yellow);
+}
+
+.self:hover.green {
+  filter: brightness(0.5) drop-shadow(0 0 1px green) drop-shadow(0 0 1px green)
+    drop-shadow(0 0 1px green);
+}
+
+.self:hover.blue {
+  filter: brightness(0.5) drop-shadow(0 0 1px blue) drop-shadow(0 0 1px blue)
+    drop-shadow(0 0 1px blue);
+}
+
+.self:hover.purple {
+  filter: brightness(0.5) drop-shadow(0 0 1px purple)
+    drop-shadow(0 0 1px purple) drop-shadow(0 0 1px purple);
+}
+
+.self:hover.pink {
+  filter: brightness(0.5) drop-shadow(0 0 1px pink) drop-shadow(0 0 1px pink)
+    drop-shadow(0 0 1px pink);
+}
+
+.self:hover.wheat {
+  filter: brightness(0.5) drop-shadow(0 0 1px wheat) drop-shadow(0 0 1px wheat)
+    drop-shadow(0 0 1px wheat);
+}
