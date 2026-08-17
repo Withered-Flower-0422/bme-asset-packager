@@ -54,6 +54,20 @@ export default function SaveButton({
 
   return (
     <>
+      <Button
+        ghost
+        color="magenta"
+        variant="outlined"
+        className={styles.self}
+        size="large"
+        icon={<PlusOutlined />}
+        onClick={() => {
+          setIsInputOpen(true)
+          setInputValue("")
+        }}
+      >
+        {t("save")}
+      </Button>
       <Modal
         title={t("formulaName")}
         open={isInputOpen}
@@ -69,18 +83,6 @@ export default function SaveButton({
           onPressEnter={saveFormulaWithCheck}
         />
       </Modal>
-      <Button
-        className={styles.self}
-        type="primary"
-        size="large"
-        icon={<PlusOutlined />}
-        onClick={() => {
-          setIsInputOpen(true)
-          setInputValue("")
-        }}
-      >
-        {t("save")}
-      </Button>
     </>
   )
 }

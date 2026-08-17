@@ -24,7 +24,19 @@ export default {
   selectPath: async (_, opt: OpenDialogOptions) =>
     (await dialog.showOpenDialog(opt)).filePaths,
 
-  isDir: (_, path: string) => statSync(path).isDirectory(),
+  isDir: (_, path: string) => {
+    try {
+      return statSync(path).isDirectory()
+    } catch {
+      return false
+    }
+  },
 
-  isFile: (_, path: string) => statSync(path).isFile(),
+  isFile: (_, path: string) => {
+    try {
+      return statSync(path).isFile()
+    } catch {
+      return false
+    }
+  },
 } satisfies HandlersSatisfier

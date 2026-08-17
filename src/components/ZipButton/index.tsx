@@ -24,8 +24,10 @@ export default function ZipButton({
 }) {
   return (
     <Button
+      ghost
+      color="orange"
+      variant="outlined"
       className={styles.self}
-      type="primary"
       size="large"
       icon={<FileZipOutlined />}
       onClick={async () => {

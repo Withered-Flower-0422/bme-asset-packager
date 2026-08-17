@@ -30,6 +30,7 @@ export interface Locale {
   author: (author: string) => string
   version: (version: string) => string
   license: (license: string) => string
+  mushQuote: (index?: number) => string
 }
 
 import en from "./en"

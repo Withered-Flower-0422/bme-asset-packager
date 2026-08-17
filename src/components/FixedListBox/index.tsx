@@ -1,5 +1,5 @@
 import { CloseOutlined, DeleteOutlined } from "@ant-design/icons"
-import { Button } from "antd"
+import { Button, Card } from "antd"
 import {
   forwardRef,
   useImperativeHandle,
@@ -71,7 +71,8 @@ const FixedListBox = forwardRef<FixedListBoxRef, FixedListBoxProps>(
 
     return (
       <div>
-        <div
+        <Card
+          size="small"
           className={`${styles.self} ${dragging ? styles.dragging : ""} `}
           onDragOver={e => handleDrag(e, true)}
           onDragLeave={e => handleDrag(e, false)}
@@ -105,18 +106,20 @@ const FixedListBox = forwardRef<FixedListBoxRef, FixedListBoxProps>(
               />
             </div>
           ))}
-        </div>
+        </Card>
 
         <div className={styles.buttons}>
           <Button
+            ghost
             danger
-            type="primary"
             icon={<DeleteOutlined />}
             onClick={() => setItems([])}
             style={{ width: "12.5%" }}
           />
           <Button
-            type="primary"
+            ghost
+            color="cyan"
+            variant="outlined"
             icon={buttonIcon}
             onClick={async () => addItems(await addContent())}
             style={{ width: "85%" }}

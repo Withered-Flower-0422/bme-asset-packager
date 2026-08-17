@@ -8,6 +8,10 @@
   user-select: none;
 }
 
+.quote {
+  font-size: small;
+}
+
 @keyframes breathe {
   0% {
     transform: scale(0.95, 1.05);

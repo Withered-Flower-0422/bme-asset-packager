@@ -26,8 +26,10 @@ export default function ImportButton({
   return (
     <>
       <Button
+        ghost
+        color="lime"
+        variant="outlined"
         className={styles.self}
-        type="primary"
         size="large"
         icon={<ImportOutlined />}
         onClick={async () => {

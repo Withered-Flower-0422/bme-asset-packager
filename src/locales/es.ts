@@ -1,4 +1,5 @@
 import type { Locale } from "."
+import { getQuote } from "../utils/mush"
 
 export default {
   abbr: "ES",
@@ -37,4 +38,33 @@ export default {
   author: author => `Autor: ${author}`,
   version: version => `Versión: ${version}`,
   license: license => `Licencia: ${license}`,
+  mushQuote: index =>
+    getQuote(
+      [
+        "Malo",
+        "Bueno",
+        "Dios",
+        "Raro",
+        "Abstracto",
+        "¡Brutal!",
+        "¡Demasiado fuerte!",
+        "Qué basura",
+        "Te extraño.",
+        "Tráelo para que haga el mapping.",
+        "Colarse en el mapa oficial.",
+        "¡Un crack!",
+        "¡OPT!!!",
+        "¡Invencible!",
+        "Unity de mierda",
+        "¡Ya lo estoy haciendo, ya lo estoy haciendo!",
+        "¡Ya estoy con ello, ya estoy con ello!",
+        "¡Ya lo estoy escribiendo, ya lo estoy escribiendo!",
+        "Cree que Mush será desgraciado.",
+        "Por favor, suscríbete al acelerador Mush.",
+        "Hacer rodar una pelota parece un poco inútil.",
+        "Mush está completamente muerto. A guisarlo.",
+        "Lo hacemos por pasión y buscamos a un hermano que haga mapping para rehacer una versión en alta definición de BLX. Soy desarrollador de videojuegos y también me encargo de la música. Realmente necesitamos tu ayuda. Nuestro proyecto se enfrenta a innumerables dificultades, como un pobre gatito atrapado en un árbol. Si pudieras unirte a nosotros y darnos algo de orientación y apoyo, ¡serías nuestro salvador! ¡Hazte nuestro amigo y superemos juntos todos los obstáculos!",
+      ],
+      index,
+    ),
 } satisfies Locale

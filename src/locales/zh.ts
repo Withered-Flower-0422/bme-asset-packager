@@ -1,4 +1,5 @@
 import type { Locale } from "."
+import { getQuote } from "../utils/mush"
 
 export default {
   abbr: "中",
@@ -36,4 +37,33 @@ export default {
   author: author => `作者: ${author}`,
   version: version => `版本: ${version}`,
   license: license => `许可证: ${license}`,
+  mushQuote: index =>
+    getQuote(
+      [
+        "坏",
+        "好",
+        "神",
+        "怪",
+        "抽象",
+        "太爆了",
+        "太强了",
+        "太屑了",
+        "想你了",
+        "抓来制图",
+        "偷进官图",
+        "是大佬！",
+        "OPT!!!",
+        "无敌了",
+        "垃圾油腻体",
+        "在做了在做了",
+        "在搞了在搞了",
+        "在写了在写了",
+        "相信猫菇会变得不幸",
+        "请订购 Mush 加速器",
+        "滚个球感觉没什么意思",
+        "锚固已经凉透了，可以炖了",
+        "为爱发电，找制图老哥，重制高清版本 blx，我是游戏开发，也在配乐。我们真的非常需要你的帮助，我们的项目困境重重，就像可怜的小猫咪被困在树上一样。如果你能够加入我们，给予一些指引和支持，那将是我们的救星！请成为我们的好友，一同披荆斩棘吧！",
+      ],
+      index,
+    ),
 } satisfies Locale
