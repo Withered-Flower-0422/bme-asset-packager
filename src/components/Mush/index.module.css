@@ -8,6 +8,22 @@
   user-select: none;
 }
 
+@keyframes breathe {
+  0% {
+    transform: scale(0.95, 1.05);
+  }
+  50% {
+    transform: scale(1.05, 0.95);
+  }
+  100% {
+    transform: scale(0.95, 1.05);
+  }
+}
+
+.self:hover {
+  animation: breathe 2s infinite linear;
+}
+
 .self:hover.red {
   filter: brightness(0.5) drop-shadow(0 0 1px red) drop-shadow(0 0 1px red)
     drop-shadow(0 0 1px red);

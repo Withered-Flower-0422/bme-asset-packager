@@ -8,10 +8,14 @@ directories:
 files:
   - dist-electron/**
   - dist/**
-  - electron/**
 
 win:
   icon: public/ballex2.ico
   target:
     - nsis
     - portable
+
+nsis:
+  oneClick: false
+  perMachine: true
+  allowToChangeInstallationDirectory: true
