@@ -1,5 +1,5 @@
 import type { Locale } from "."
-import { getQuote } from "../utils/mush"
+import { getRandomItem } from "../utils/rnd"
 
 export default {
   abbr: "中",
@@ -38,7 +38,7 @@ export default {
   version: version => `版本: ${version}`,
   license: license => `许可证: ${license}`,
   mushQuote: index =>
-    getQuote(
+    getRandomItem(
       [
         "坏",
         "好",

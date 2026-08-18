@@ -1,6 +1,9 @@
 import { Tooltip } from "antd"
 import { useState } from "react"
+import mush from "../../assets/mush/mush.png"
+import memes from "../../assets/memes"
 import t from "../../locales"
+import { getRandomItem } from "../../utils/rnd"
 import styles from "./index.module.css"
 
 const colors = [
@@ -19,13 +22,20 @@ export default function Mush() {
 
   return (
     <Tooltip
-      placement="left"
+      placement="leftTop"
       color="#333"
-      title={() => <span className={styles.quote}>{t("mushQuote")}</span>}
+      title={() =>
+        /* eslint-disable-next-line */
+        Math.random() > 0.1 ? (
+          <span className={styles.quote}>{t("mushQuote")}</span>
+        ) : (
+          <img className={styles.meme} src={getRandomItem(memes)} />
+        )
+      }
     >
       <img
         className={`${styles.self} ${styles[colors.at(colorIndex)!]}`}
-        src="mush.png"
+        src={mush}
         alt="Mush"
         onClick={() =>
           window.electronAPI.openExternal(

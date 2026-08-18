@@ -1,5 +1,5 @@
 import type { Locale } from "."
-import { getQuote } from "../utils/mush"
+import { getRandomItem } from "../utils/rnd"
 
 export default {
   abbr: "EN",
@@ -39,7 +39,7 @@ export default {
   version: version => `Version: ${version}`,
   license: license => `License: ${license}`,
   mushQuote: index =>
-    getQuote(
+    getRandomItem(
       [
         "Bad",
         "Good",

@@ -12,6 +12,10 @@
   font-size: small;
 }
 
+.meme {
+  width: 120px;
+}
+
 @keyframes breathe {
   0% {
     transform: scale(0.95, 1.05);
