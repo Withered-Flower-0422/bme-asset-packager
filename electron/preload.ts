@@ -1,5 +1,5 @@
-import { contextBridge, ipcRenderer, type IpcMainInvokeEvent } from "electron"
-import type { Api, Handlers } from "./ipc"
+import { contextBridge, ipcRenderer } from "electron"
+import type { Api } from "./ipc"
 import pre from "./pre"
 
 const apis = [
@@ -26,6 +26,7 @@ const apis = [
 
   "pack",
 ] satisfies Api[]
+export type ExposedApi = (typeof apis)[number]
 
 contextBridge.exposeInMainWorld("electronAPI", {
   ...Object.fromEntries(
@@ -36,17 +37,3 @@ contextBridge.exposeInMainWorld("electronAPI", {
   ),
   ...pre,
 })
-
-declare global {
-  interface Window {
-    electronAPI: {
-      [K in (typeof apis)[number]]: Handlers[K] extends (
-        ...args: infer A
-      ) => infer R
-        ? (
-            ...args: A extends [IpcMainInvokeEvent, ...infer B] ? B : A
-          ) => R extends Promise<any> ? R : Promise<R>
-        : never
-    } & typeof pre
-  }
-}
