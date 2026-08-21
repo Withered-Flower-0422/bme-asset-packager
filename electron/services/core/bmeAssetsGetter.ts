@@ -54,7 +54,10 @@ export default class BMEAssetsGetter {
     return res
   }
 
-  get allAssets(): Record<"assets" | "notFounds", Set<BMEPath | BMEIconPath>> {
+  get allAssets(): {
+    assets: Set<BMEPath | BMEIconPath>
+    grouped: GroupedAssets
+  } {
     const assets = new Set<BMEPath | BMEIconPath>()
     const notFounds = new Set<BMEPath | BMEIconPath>()
 
@@ -89,11 +92,7 @@ export default class BMEAssetsGetter {
       }
     }
 
-    return { assets, notFounds }
-  }
-
-  get groupedAllAssets(): GroupedAssets {
-    const res: GroupedAssets = {
+    const grouped: GroupedAssets = {
       Audios: new Set(),
       Items: new Set(),
       Materials: new Set(),
@@ -102,18 +101,14 @@ export default class BMEAssetsGetter {
       Textures: new Set(),
       Scenes: new Set(),
       Icons: new Set(),
-      NotFounds: new Set(),
+      NotFounds: notFounds,
     }
-
-    const { assets, notFounds } = this.allAssets
 
     for (const asset of assets) {
-      if (isIcon(asset)) res.Icons.add(asset)
-      else (res as any)[asset.split(sep)[0]].add(asset)
+      if (isIcon(asset)) grouped.Icons.add(asset)
+      else (grouped as any)[asset.split(sep)[0]].add(asset)
     }
 
-    for (const asset of notFounds) res.NotFounds.add(asset)
-
-    return res
+    return { assets, grouped }
   }
 }

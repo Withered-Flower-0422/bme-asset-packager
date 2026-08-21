@@ -34,9 +34,9 @@ export default class BMEAssetsPacker {
     const archive = new ZipArchive({ zlib: { level: 9 } })
     archive.pipe(createWriteStream(join(this.outputDir, this.zipName)))
 
-    const { assets, notFounds } = this.assetsGetter.allAssets
+    const { assets, grouped } = this.assetsGetter.allAssets
 
-    const notFound = new Set<string>(notFounds)
+    const notFound = new Set<string>(grouped.NotFounds)
     for (const asset of assets) {
       const assetPath = join(this.assetsGetter.root, asset)
       if (!existsSync(assetPath)) {
@@ -58,7 +58,7 @@ export default class BMEAssetsPacker {
     await archive.finalize()
 
     return {
-      zippedAssets: this.assetsGetter.groupedAllAssets,
+      zippedAssets: grouped,
       extraFiles: this.extraFiles,
       notFound,
       zipSize: archive.pointer(),
