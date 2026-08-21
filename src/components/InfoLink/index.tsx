@@ -1,7 +1,7 @@
 import type { ReactNode } from "react"
 // import styles from "./index.module.css"
 
-const { openExternal } = window.electronAPI
+const { openExternal } = electronAPI
 
 export default function InfoLink({
   link,

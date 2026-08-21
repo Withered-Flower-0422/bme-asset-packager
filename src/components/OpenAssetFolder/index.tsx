@@ -8,7 +8,7 @@ export default function OpenAssetFolder() {
     <Button
       className={styles.self}
       type="text"
-      onClick={() => window.electronAPI.openPath(root)}
+      onClick={() => electronAPI.openPath(root)}
     >
       <FolderViewOutlined />
     </Button>

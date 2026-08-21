@@ -1,6 +1,6 @@
-import electron from "vite-plugin-electron/simple"
-import { defineConfig } from "vite"
 import react from "@vitejs/plugin-react"
+import { defineConfig } from "vite"
+import electron from "vite-plugin-electron/simple"
 
 export default defineConfig({
   plugins: [

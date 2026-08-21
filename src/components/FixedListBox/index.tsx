@@ -26,7 +26,7 @@ interface FixedListBoxProps {
   disableFiles?: boolean
 }
 
-const { isFile, isDir, getFilePath } = window.electronAPI
+const { isFile, isDir, getFilePath } = electronAPI
 
 const FixedListBox = forwardRef<FixedListBoxRef, FixedListBoxProps>(
   (

@@ -4,13 +4,13 @@ export default function () {
   const [titleGradient, _setTitleGradient] = useState(false)
 
   const loadTitleGradient = useCallback(
-    async () => _setTitleGradient(await window.electronAPI.getTitleGradient()),
+    async () => _setTitleGradient(await electronAPI.getTitleGradient()),
     [],
   )
 
   const setTitleGradient = useCallback(
     async (titleGradient: boolean) => {
-      await window.electronAPI.setTitleGradient(titleGradient)
+      await electronAPI.setTitleGradient(titleGradient)
       await loadTitleGradient()
     },
     [loadTitleGradient],

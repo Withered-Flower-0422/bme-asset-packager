@@ -11,7 +11,7 @@ import t from "../../locales"
 import { root, sep, userProfile } from "../../utils/sys"
 import styles from "./index.module.css"
 
-const { selectPath, pack } = window.electronAPI
+const { selectPath, pack } = electronAPI
 
 export default function ZipButton({
   folderRef,

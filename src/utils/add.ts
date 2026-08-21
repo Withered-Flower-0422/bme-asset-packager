@@ -3,7 +3,7 @@ import { categories, suffixes } from "./bme"
 import { warning } from "./msg"
 import t from "../locales"
 
-const { selectPath } = window.electronAPI
+const { selectPath } = electronAPI
 const iconRoot = [root, "Scripts", "_Editor", "Icons"].join(sep)
 
 const _addFolders = (sources: string[]) => {

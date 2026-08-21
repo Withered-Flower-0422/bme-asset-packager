@@ -1,4 +1,4 @@
-const { getAssetsPath, getUserProfile, getSep } = window.electronAPI
+const { getAssetsPath, getUserProfile, getSep } = electronAPI
 
 export const sep = await getSep()
 export const root = await getAssetsPath()

@@ -38,7 +38,7 @@ export default function Mush() {
         src={mush}
         alt="Mush"
         onClick={() =>
-          window.electronAPI.openExternal(
+          electronAPI.openExternal(
             "https://store.steampowered.com/app/1383570/",
           )
         }
