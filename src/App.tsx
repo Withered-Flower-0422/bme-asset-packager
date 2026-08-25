@@ -4,7 +4,7 @@ import {
   PictureOutlined,
 } from "@ant-design/icons"
 import { useRef } from "react"
-import styles from "./App.module.css"
+import styles from "./App.module.scss"
 import FixedListBox, { type FixedListBoxRef } from "./components/FixedListBox"
 import ImportButton from "./components/ImportButton"
 import Info from "./components/Info"

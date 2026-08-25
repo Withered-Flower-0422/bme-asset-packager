@@ -2,7 +2,7 @@ import { Modal } from "antd"
 import packageJson from "../../../package.json"
 import t from "../../locales"
 import InfoLink from "../InfoLink"
-import styles from "./index.module.css"
+import styles from "./index.module.scss"
 
 export default function Info() {
   return (

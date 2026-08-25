@@ -1,12 +1,13 @@
 import { Tooltip } from "antd"
 import { useState } from "react"
-import mush from "../../assets/mush/mush.png"
 import memes from "../../assets/memes"
+import mush from "../../assets/mush/mush.png"
 import t from "../../locales"
-import { getRandomItem } from "../../utils/rnd"
-import styles from "./index.module.css"
+import { cssNamedColors, type CssNamedColor } from "../../utils/css"
+import { getRandomItem, getRandomItems } from "../../utils/rnd"
+import styles from "./index.module.scss"
 
-const colors = [
+const defaultColors: CssNamedColor[] = [
   "red",
   "orange",
   "yellow",
@@ -15,9 +16,10 @@ const colors = [
   "purple",
   "pink",
   "wheat",
-] as const
+]
 
 export default function Mush() {
+  const [colors, setColors] = useState(defaultColors)
   const [colorIndex, setColorIndex] = useState(0)
 
   return (
@@ -42,6 +44,18 @@ export default function Mush() {
             "https://store.steampowered.com/app/1383570/",
           )
         }
+        onMouseUp={e => {
+          e.preventDefault()
+          setColorIndex(0)
+          switch (e.button) {
+            case 1:
+              setColors([...defaultColors])
+              break
+            case 2:
+              setColors(getRandomItems(cssNamedColors, 8))
+              break
+          }
+        }}
         onWheel={({ deltaY }) =>
           setColorIndex(prev => (prev + Math.sign(deltaY)) % colors.length)
         }

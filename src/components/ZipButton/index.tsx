@@ -9,7 +9,7 @@ import type {
 import type { FixedListBoxRef } from "../../components/FixedListBox"
 import t from "../../locales"
 import { root, sep, userProfile } from "../../utils/sys"
-import styles from "./index.module.css"
+import styles from "./index.module.scss"
 
 const { selectPath, pack } = electronAPI
 
