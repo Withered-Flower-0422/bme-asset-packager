@@ -5,11 +5,11 @@
   border: 2px dashed #666;
   margin-bottom: 8px;
   transition: all 0.3s ease;
-}
 
-.self.dragging {
-  border-color: #eee;
-  background-color: #444;
+  &.dragging {
+    border-color: #eee;
+    background-color: #444;
+  }
 }
 
 .item {
@@ -20,10 +20,10 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   gap: 8px;
   transition: all 0.3s ease;
-}
 
-.item:hover {
-  background-color: #333;
+  &:hover {
+    background-color: #333;
+  }
 }
 
 .itemContent {

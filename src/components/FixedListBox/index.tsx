@@ -7,7 +7,7 @@ import {
   type ReactNode,
 } from "react"
 import { v4 } from "uuid"
-import styles from "./index.module.css"
+import styles from "./index.module.scss"
 
 export interface FixedListBoxRef {
   getItems: () => string[]

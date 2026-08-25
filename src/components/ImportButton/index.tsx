@@ -5,7 +5,7 @@ import type { FixedListBoxRef } from "../../components/FixedListBox"
 import type useFormulas from "../../hooks/useFormulas"
 import t from "../../locales"
 import { success, warning } from "../../utils/msg"
-import styles from "./index.module.css"
+import styles from "./index.module.scss"
 
 export default function ImportButton({
   folderRef,

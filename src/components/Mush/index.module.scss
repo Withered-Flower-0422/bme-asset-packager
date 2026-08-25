@@ -30,6 +30,7 @@ $colors:
   transition: 200ms all linear;
   cursor: pointer;
   user-select: none;
+
   &:hover {
     animation: breathe 2s infinite linear;
     @each $color in $colors {
