@@ -10,6 +10,11 @@ Powered by [Vite](https://vite.dev/), [Electron](https://www.electronjs.org/) an
 [![](https://img.shields.io/badge/QQ%20Group-797934847-09f?style=flat)](https://qm.qq.com/q/2mIPnK8JIk)
 [![](https://img.shields.io/badge/Discord-5NygdBmksE-56e?style=flat)](https://discord.gg/5NygdBmksE/)
 
+## Tauri Version
+
+- Go to get [Tauri version](https://github.com/Withered-Flower-0422/bme-asset-packager-tauri/releases) of BME Asset Packager.
+- And its [repository](https://github.com/Withered-Flower-0422/bme-asset-packager-tauri).
+
 ## Features
 
 - Auto collects related assets.
