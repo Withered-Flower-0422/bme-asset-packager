@@ -28,8 +28,8 @@ interface FixedListBoxProps {
 
 const { isFile, isDir, getFilePath } = electronAPI
 
-const FixedListBox = forwardRef<FixedListBoxRef, FixedListBoxProps>(
-  (
+export default forwardRef<FixedListBoxRef, FixedListBoxProps>(
+  function FixedListBox(
     {
       width,
       height,
@@ -42,7 +42,7 @@ const FixedListBox = forwardRef<FixedListBoxRef, FixedListBoxProps>(
       disableFiles = false,
     },
     ref,
-  ) => {
+  ) {
     const [items, setItems] = useState<{ id: string; content: string }[]>(
       initialData.map(content => ({ id: v4(), content })),
     )
@@ -73,7 +73,7 @@ const FixedListBox = forwardRef<FixedListBoxRef, FixedListBoxProps>(
       <div>
         <Card
           size="small"
-          className={`${styles.self} ${dragging ? styles.dragging : ""} `}
+          className={`${styles.self} ${dragging ? styles.dragging : ""}`}
           onDragOver={e => handleDrag(e, true)}
           onDragLeave={e => handleDrag(e, false)}
           onDrop={async e => {
@@ -131,5 +131,3 @@ const FixedListBox = forwardRef<FixedListBoxRef, FixedListBoxProps>(
     )
   },
 )
-
-export default FixedListBox
