@@ -21,7 +21,7 @@ export default function Info() {
                 {t("author", packageJson.author)}
               </InfoLink>
               <InfoLink link="https://github.com/Withered-Flower-0422/bme-asset-packager/releases">
-                {t("version", packageJson.version)}
+                {t("version", packageJson.version)} (electron)
               </InfoLink>
               <InfoLink link="https://github.com/Withered-Flower-0422/bme-asset-packager/blob/main/LICENSE">
                 {t("license", packageJson.license)}
