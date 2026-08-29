@@ -43,8 +43,7 @@ export default {
     store.set("formulas", { ...store.get("formulas"), [name]: formula }),
 
   deleteFormula: (_, name: string) => {
-    const formulas = store.get("formulas")
-    delete formulas[name]
-    store.set("formulas", formulas)
+    const { [name]: __, ...rest } = store.get("formulas")
+    store.set("formulas", rest)
   },
 } satisfies HandlersSatisfier
