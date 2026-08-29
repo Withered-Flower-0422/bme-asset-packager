@@ -1,23 +1,20 @@
-import { useCallback, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import t, { type Lang } from "../locales"
 
-export default function () {
-  const [lang, _setLang] = useState<Lang>("en")
+export default () => {
+  const [lang, setLang] = useState<Lang>("en")
 
-  const loadLang = useCallback(
-    async () => _setLang((t.lang = await electronAPI.getLang())),
+  useEffect(
+    () => void electronAPI.getLang().then(la => setLang((t.lang = la))),
     [],
   )
 
-  const setLang = useCallback(
-    async (lang: Lang) => {
-      await electronAPI.setLang(lang)
-      await loadLang()
+  return {
+    lang,
+    setLang: (value: Lang) => {
+      t.lang = value
+      electronAPI.setLang(value)
+      setLang(value)
     },
-    [loadLang],
-  )
-
-  useEffect(() => void loadLang(), [loadLang])
-
-  return { lang, loadLang, setLang }
+  }
 }

@@ -1,22 +1,18 @@
-import { useCallback, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 
-export default function () {
-  const [titleGradient, _setTitleGradient] = useState(false)
+export default () => {
+  const [titleGradient, setTitleGradient] = useState(false)
 
-  const loadTitleGradient = useCallback(
-    async () => _setTitleGradient(await electronAPI.getTitleGradient()),
+  useEffect(
+    () => void electronAPI.getTitleGradient().then(setTitleGradient),
     [],
   )
 
-  const setTitleGradient = useCallback(
-    async (titleGradient: boolean) => {
-      await electronAPI.setTitleGradient(titleGradient)
-      await loadTitleGradient()
+  return {
+    titleGradient,
+    setTitleGradient: (value: boolean) => {
+      electronAPI.setTitleGradient(value)
+      setTitleGradient(value)
     },
-    [loadTitleGradient],
-  )
-
-  useEffect(() => void loadTitleGradient(), [loadTitleGradient])
-
-  return { titleGradient, loadTitleGradient, setTitleGradient }
+  }
 }

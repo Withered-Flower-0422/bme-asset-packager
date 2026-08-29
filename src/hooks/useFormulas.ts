@@ -1,31 +1,23 @@
-import { useCallback, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import type { Formula, Formulas } from "../../electron/ipc/store"
 
-export default function () {
+export default () => {
   const [formulas, setFormulas] = useState<Formulas>({})
 
-  const loadFormulas = useCallback(
-    async () => setFormulas(await electronAPI.loadFormulas()),
-    [],
-  )
+  useEffect(() => void electronAPI.loadFormulas().then(setFormulas), [])
 
-  const deleteFormula = useCallback(
-    async (name: string) => {
-      await electronAPI.deleteFormula(name)
-      await loadFormulas()
+  return {
+    formulas,
+    deleteFormula: (name: string) => {
+      electronAPI.deleteFormula(name)
+      setFormulas(prev => {
+        const { [name]: _, ...rest } = prev
+        return rest
+      })
     },
-    [loadFormulas],
-  )
-
-  const saveFormula = useCallback(
-    async (name: string, formula: Formula) => {
-      await electronAPI.saveFormula(name, formula)
-      await loadFormulas()
+    saveFormula: (name: string, formula: Formula) => {
+      electronAPI.saveFormula(name, formula)
+      setFormulas(prev => ({ ...prev, [name]: formula }))
     },
-    [loadFormulas],
-  )
-
-  useEffect(() => void loadFormulas(), [loadFormulas])
-
-  return { formulas, deleteFormula, saveFormula, loadFormulas }
+  }
 }
